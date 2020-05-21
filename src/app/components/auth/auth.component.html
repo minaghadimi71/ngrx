@@ -1,0 +1,50 @@
+<div class="col-8">
+  <div class="card">
+    <div class="card-header">
+      Login:
+    </div>
+    <div class="card-body">
+      <form #loginForm="ngForm" (ngSubmit)="loginSubmit()">
+        <div class="form-group">
+          <label for="email">
+            Email:
+          </label>
+          <input type="email"
+                 class="form-control"
+                 id="email"
+                 ngModel
+                 name="email"
+                 #email="ngModel" email required
+                 [ngClass]="{'is-invalid': !email.valid && email.touched}">
+          <div class="invalid-feedback d-inline"
+               *ngIf="!email.valid && email.touched">
+            <span *ngIf="email.errors?.required">
+              Please provide a email.
+            </span>
+            <span *ngIf="email.errors?.email">
+              Please provide a valid email.
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">
+            Email:
+          </label>
+          <input type="password"
+                 class="form-control"
+                 id="password"
+                 ngModel
+                 name="password"
+                 #password="ngModel"
+                 required
+                 [ngClass]="{'is-invalid': !password.valid && password.touched}">
+          <div class="invalid-feedback d-inline"
+               *ngIf="!password.valid && password.touched">
+              Please provide a password.
+          </div>
+        </div>
+        <button class="btn btn-info" type="submit" [disabled]="loginForm.invalid">Login</button>
+      </form>
+    </div>
+  </div>
+</div>

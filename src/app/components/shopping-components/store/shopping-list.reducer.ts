@@ -1,15 +1,10 @@
-import {Ingredient} from "../class/ingredient";
+import {Ingredient} from "../../../class/ingredient";
 import * as ShoppingListActions from "./shopping-list.actions";
 
 export interface State {
   ingredients: Ingredient[];
   editIngredient: Ingredient,
   editIngredientIndex: number,
-}
-
-export interface AppState {
-  shoppingList: State;
-
 }
 
 export const initialState: State = {

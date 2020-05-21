@@ -1,0 +1,25 @@
+<form #manageShopping="ngForm" (ngSubmit)="onSubmit()">
+  <div class="form-row">
+    <div class="col">
+      <label for="name">
+        Name:
+      </label>
+      <input type="text"
+             class="form-control"
+             id="name" ngModel name="name" required>
+    </div>
+    <div class="col">
+      <label for="amount">
+        Amount:
+      </label>
+      <input type="number" class="form-control"
+             id="amount" ngModel name="amount" required>
+    </div>
+  </div>
+  <div class="form-row mt-8">
+    <button class="btn btn-info mr-2" type="submit" [disabled]="manageShopping.invalid">{{editMode? 'Edit': 'Add'}}</button>
+    <button class="btn btn-info mr-2" type="button" (click)="delete()"
+    *ngIf="editMode">Delete</button>
+  </div>
+
+</form>
