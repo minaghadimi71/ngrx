@@ -3,7 +3,6 @@ import {NgForm} from "@angular/forms";
 import {Ingredient} from "../../../class/ingredient";
 import {Store} from "@ngrx/store";
 import * as ShoppingListActions from "../store/shopping-list.actions"
-import {ShoppingService} from "../../../service/shopping.service";
 import {Subscription} from "rxjs";
 import * as fromApp from '../../store/app.reducer'
 

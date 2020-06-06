@@ -23,7 +23,7 @@ export class ShoppingService {
         for (const key in data) {
           ingredients.push(data[key]);
         }
-        return ingredients[0];
+        return ingredients;
       })
     );
   }

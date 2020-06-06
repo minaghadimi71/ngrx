@@ -1,7 +1,7 @@
 <div class="col-8">
   <div class="card">
     <div class="card-header">
-      Login:
+      {{registerPage? 'Register': 'Login'}}
     </div>
     <div class="card-body">
       <form #loginForm="ngForm" (ngSubmit)="loginSubmit()">
@@ -28,7 +28,7 @@
         </div>
         <div class="form-group">
           <label for="password">
-            Email:
+            Password:
           </label>
           <input type="password"
                  class="form-control"
@@ -43,7 +43,9 @@
               Please provide a password.
           </div>
         </div>
-        <button class="btn btn-info" type="submit" [disabled]="loginForm.invalid">Login</button>
+        <button class="btn btn-info mr-2" type="submit" [disabled]="loginForm.invalid"> {{registerPage? 'Register': 'Login'}}</button>
+        <button class="btn btn-info" type="button" (click)="goToRegister()">Go to {{!registerPage? 'register': 'login'}}</button>
+
       </form>
     </div>
   </div>

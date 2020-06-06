@@ -9,10 +9,12 @@ import { ManageShoppingComponent } from './components/shopping-components/manage
 import {FormsModule} from "@angular/forms";
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { HeaderComponent } from './components/header/header.component';
-import { HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthComponent} from "./components/auth/auth.component";
 import {AuthService} from "./service/auth.service";
 import * as fromAppReducer from "../app/components/store/app.reducer"
+import {AuthGuardService} from "./service/auth.guard.service";
+import {AuthInterceptorService} from "./service/auth-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -30,7 +32,12 @@ import * as fromAppReducer from "../app/components/store/app.reducer"
     HttpClientModule,
     StoreModule.forRoot(fromAppReducer.appReducer),
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuardService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
